@@ -65,6 +65,7 @@ class MainActivity : AppCompatActivity() {
 
   override fun onSaveInstanceState(outState: Bundle) {
     super.onSaveInstanceState(outState)
+    outState.putString(QUOTE_AUTHOR, quoteAuthor)
     outState.putString(QUOTE_TEXT, quoteText)
     color?.let {
       outState.putInt(QUOTE_COLOR, it)
