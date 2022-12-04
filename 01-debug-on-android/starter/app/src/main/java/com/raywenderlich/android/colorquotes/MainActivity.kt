@@ -43,6 +43,7 @@ class MainActivity : AppCompatActivity() {
   private var quoteAuthor:String? = null
   private var quoteText:String? = null
   private var color:Int? = null
+  private val TAG = this.javaClass.simpleName
 
   companion object{
     private const val QUOTE_AUTHOR = "QUOTE_AUTHOR"
@@ -55,11 +56,14 @@ class MainActivity : AppCompatActivity() {
     setContentView(R.layout.activity_main)
 
     randomQuote(mainLayout)
-    if (savedInstanceState != null) {
+     if (savedInstanceState != null) {
+      Log.d(TAG, "onCreate: restoring the previous state")
       quoteAuthor = savedInstanceState.getString(QUOTE_AUTHOR)!!
       quoteText = savedInstanceState.getString(QUOTE_TEXT)!!
       color = savedInstanceState.getInt(QUOTE_COLOR)
       updateUI()
+    } else {
+      Log.d(TAG, "onCreate: No previous state found")
     }
   }
 
